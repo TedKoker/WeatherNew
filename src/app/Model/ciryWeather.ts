@@ -5,6 +5,7 @@
 export class CityWeather{
     weather: Weather[];     //contains the weather
     main: Main;      //contains the main onformation about the weather
+    name: string;
 }
 
 class Weather{

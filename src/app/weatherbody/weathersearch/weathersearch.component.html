@@ -3,6 +3,10 @@
         <input type="text" class="form-control form-control-lg" placeholder="Type a city">
     </div>
     <div class="col-3 search">
-        <button class="btn btn-outline-primary btn-lg">Search</button>
+        <button class="btn btn-outline-primary btn-lg" (click)="printCities()">Search</button>
     </div>    
 </div>
+<button (click)="do()">do</button>
+<ol>
+    <li *ngFor="let cityItam of cities">{{cityItam}}</li>
+</ol>
