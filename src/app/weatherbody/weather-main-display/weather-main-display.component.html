@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <div class="col col-8">
+                <h2>{{cityWeather.name}}, <sub>Israel</sub></h2>
+            </div>
+            <div class="col col-3">
+                <h3>{{dateOfNow |  date :'HH:mm '}} <sub>{{dateOfNow | date :'(dd/MM/yy)'}}</sub></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col fixCenterPossion">
+                <h2>{{cityWeather.weather[0].main}}</h2>
+                <img [src]="cityWeather.weather[0].imageUrl">
+            </div>
+        </div>
+    </div>
+</div>

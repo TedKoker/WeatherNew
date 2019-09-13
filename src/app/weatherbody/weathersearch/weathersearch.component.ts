@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CityService } from 'src/app/Services/CityService';
-import { GetWeatherService } from 'src/app/Services/GetWeatherService';
-import { Test } from 'src/app/Model/test';
+
 
 @Component({
   selector: 'app-weathersearch',
@@ -10,21 +9,22 @@ import { Test } from 'src/app/Model/test';
 })
 
 export class WeathersearchComponent {
-  cities: string[];
+  searchInput:string=""; //The string that the user types in the search box
+  searchAutoComplete: string[]; //will hold the possible auto complete for the user
 
-  constructor(private cityArray: CityService, private getWaetherSevice: GetWeatherService, private test:Test) { 
-    this.cities=new Array<string>();
+  constructor(private cityService: CityService) { 
+    this.searchAutoComplete=new Array<string>();
   }
 
-  ngOnInit() {
-  }
-
-  printCities(){
-    this.getWaetherSevice.citySearch();
-  }
-
-  do(){
-    console.log(this.test.name);
+  userType(){
+    /**
+     * Push to the searchAutocomplete evrything the includes what the user typed
+     */
+    this.searchAutoComplete=[];
+    for(let i=0; i<this.cityService.cityArray.length; i++){
+      if(this.cityService.cityArray[i].toLocaleLowerCase().includes(this.searchInput.toLocaleLowerCase()))
+        this.searchAutoComplete.push(this.cityService.cityArray[i]);
+    }
   }
 
 }

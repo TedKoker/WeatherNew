@@ -12,6 +12,7 @@ class Weather{
     main: string;
     description: string;      //weather description
     icon: string      //weather icon code, witch will be needed to add to the right URL
+    imageUrl: string    //it will not come from the json file, and will have to put manually from the service
 }
 
 class Main{

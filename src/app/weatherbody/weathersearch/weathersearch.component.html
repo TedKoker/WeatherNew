@@ -1,12 +1,11 @@
 <div class="row">
     <div class="col-9 search">
-        <input type="text" class="form-control form-control-lg" placeholder="Type a city">
+        <input type="text" class="form-control form-control-lg" [(ngModel)]="searchInput" (input)="userType()" placeholder="Type a city">
+          <ul class="list-group" *ngIf="searchInput!=''">
+            <li class="list-group-item list-group-item-action" *ngFor="let complete of searchAutoComplete">{{complete}}</li>
+          </ul>
     </div>
     <div class="col-3 search">
-        <button class="btn btn-outline-primary btn-lg" (click)="printCities()">Search</button>
+        <button class="btn btn-outline-primary btn-lg">Search</button>
     </div>    
 </div>
-<button (click)="do()">do</button>
-<ol>
-    <li *ngFor="let cityItam of cities">{{cityItam}}</li>
-</ol>
