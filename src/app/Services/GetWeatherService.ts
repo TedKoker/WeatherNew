@@ -36,7 +36,7 @@ export class GetWeatherService{
          * couse I already display it in the main display (called by method "searchWeather").
          */
         let sourceUrl="https://api.openweathermap.org/data/2.5/forecast";
-        let params=new HttpParams().set("q",city+",israel").set("appid",this.appKey);
+        let params=new HttpParams().set("q",city+",IL").set("appid",this.appKey);
         this.httpClient.get<CityFiveDays>(sourceUrl, {params})
         .subscribe(data=>{
             this.cityFiveDays = data as CityFiveDays;

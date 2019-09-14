@@ -8,9 +8,10 @@ import { GetWeatherService } from '../Services/GetWeatherService';
 })
 export class WeatherbodyComponent implements OnInit {
 
-  constructor(private getWeatherService: GetWeatherService) { }
+  constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
