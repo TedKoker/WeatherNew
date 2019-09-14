@@ -27,19 +27,36 @@ export class GetWeatherService{
     }
 
     public weatherForecast(city: string){
+        /**
+         * This method gets the information about 5 date forecast.
+         * Becouse the api returns information about weather in every 3 hours in those day,
+         * I take the weather in 12:00:00 (as the maximus tempeture),
+         * and from 00:00:00 (as the minimum tempeture),
+         * Also, I remove the information about this day, 
+         * couse I already display it in the main display (called by method "searchWeather").
+         */
         let sourceUrl="https://api.openweathermap.org/data/2.5/forecast";
         let params=new HttpParams().set("q",city+",israel").set("appid",this.appKey);
         this.httpClient.get<CityFiveDays>(sourceUrl, {params})
         .subscribe(data=>{
             this.cityFiveDays = data as CityFiveDays;
             for(let i=0; i<this.cityFiveDays.list.length; i++){
-                this.cityFiveDays.list[i].dt_txt = new Date(this.cityFiveDays.list[i].dt_txt);
-                console.log(this.cityFiveDays.list[i].dt_txt.getHours());
-                /*if(this.cityFiveDays.list[i].dt_txt.getHours()!=12 && this.cityFiveDays.list[i].dt_txt.getHours()!=0){
-
-                }*/
+                let date = this.cityFiveDays.list[i].dt_txt.toString();
+                if(!date.includes("12:00:00") && !date.includes("00:00:00")){
+                    this.cityFiveDays.list.splice(i,1);
+                    i--;
+                }
+                else{
+                    this.cityFiveDays.list[i].dt_txt = new Date(date);
+                    if(this.cityFiveDays.list[i].dt_txt.getDate()==new Date().getDate()){
+                        this.cityFiveDays.list.splice(i,1);
+                        i--;
+                    }
+                }
             }
-            console.log("finish forecast subscribe");
+        },
+        (er: HttpErrorResponse) => {
+            console.log (er.message);
         });
     }
 

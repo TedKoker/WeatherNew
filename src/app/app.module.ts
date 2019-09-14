@@ -7,13 +7,15 @@ import { WeatherbodyComponent } from './weatherbody/weatherbody.component';
 import { WeathersearchComponent } from './weatherbody/weathersearch/weathersearch.component';
 import {HttpClientModule} from '@angular/common/http';
 import { WeatherMainDisplayComponent } from './weatherbody/weather-main-display/weather-main-display.component';
+import { WeatherFiveDaysComponent } from './weatherbody/weather-five-days/weather-five-days.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherbodyComponent,
     WeathersearchComponent,
-    WeatherMainDisplayComponent
+    WeatherMainDisplayComponent,
+    WeatherFiveDaysComponent
   ],
   imports: [
     BrowserModule,
