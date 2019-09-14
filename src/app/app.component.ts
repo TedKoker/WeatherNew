@@ -13,5 +13,6 @@ export class AppComponent {
 
   ngOnInit(){
     this.getWeatherService.searchWeather("Tel Aviv");
+    this.getWeatherService.weatherForecast("Tel Aviv");
   }
 }

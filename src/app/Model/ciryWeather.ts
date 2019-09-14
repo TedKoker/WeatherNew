@@ -21,7 +21,7 @@ class Main{
      * and the min and the max tempeture are the same (only in Israel)
      */
 
-    temp: number;      //the current tamputures os the day
+    temp: number;      //the current tamputures of the day, in Kelvin (decrease 273.15 to get Celsius)
     temp_min: number;      //gives the max temp of the date, in Kelvin (decrease 273.15 to get Celsius)
     temp_max: number;      //gives the min temp of the date, in Kelvin (decrease 273.15 to get Celsius)
 }
