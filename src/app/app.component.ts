@@ -8,6 +8,8 @@ import { GetWeatherService } from './Services/GetWeatherService';
 })
 export class AppComponent {
   apiCityRequest: string;
+  lat: number=0;
+  lon: number=0;
 
   constructor(private getWeatherService: GetWeatherService){}
 
@@ -32,7 +34,7 @@ export class AppComponent {
     }
   }
 
-  ngOnInit(){
+  async ngOnInit() {
     /**
      * TO DO:
      * 1) Get users GPS location, and if I can not get it, set Tel Aviv as defult city.
@@ -40,5 +42,20 @@ export class AppComponent {
      */
     this.getWeatherService.searchWeather("Tel Aviv");
     this.getWeatherService.weatherForecast("Tel Aviv");
+    await this.getPosition();
+    console.log(this.lon);
+  }
+
+  
+
+  async getPosition(): Promise<any>
+  {
+    return await new Promise((resolve) => {
+         navigator.geolocation.getCurrentPosition(position => {
+           resolve(this.lat = position.coords.latitude);
+            resolve (this.lon = position.coords.longitude);
+    });})
+    
+
   }
 }

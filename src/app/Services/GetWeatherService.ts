@@ -35,6 +35,10 @@ export class GetWeatherService{
          * Also, I remove the information about this day, 
          * couse I already display it in the main display (called by method "searchWeather").
          */
+
+         /**
+          * Fix bug so it will alwais shows full 5 days
+          */
         let sourceUrl="https://api.openweathermap.org/data/2.5/forecast";
         let params=new HttpParams().set("q",city+",IL").set("appid",this.appKey);
         this.httpClient.get<CityFiveDays>(sourceUrl, {params})
@@ -48,7 +52,7 @@ export class GetWeatherService{
                 }
                 else{
                     this.cityFiveDays.list[i].dt_txt = new Date(date);
-                    if(this.cityFiveDays.list[i].dt_txt.getDate()==new Date().getDate() && new Date().getHours()>21){
+                    if(this.cityFiveDays.list[i].dt_txt.getDate()==new Date().getDate() && new Date().getHours()>15){
                         this.cityFiveDays.list.splice(i,1);
                         i--;
                     }

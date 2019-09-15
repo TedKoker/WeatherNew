@@ -27,6 +27,9 @@ export class WeatherFiveDaysComponent {
         }
       }
     }
+    for(let i=0; i<this.cityFiveDays.list.length; i+=1){
+      console.log(this.cityFiveDays.list[i].dt_txt);
+    }
   }
 
 }
