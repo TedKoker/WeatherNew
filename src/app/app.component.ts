@@ -8,8 +8,8 @@ import { GetWeatherService } from './Services/GetWeatherService';
 })
 export class AppComponent {
   apiCityRequest: string;
-  lat: number=0;
-  lon: number=0;
+  lat: number=undefined;
+  lon: number=undefined;
 
   constructor(private getWeatherService: GetWeatherService){}
 
@@ -42,20 +42,24 @@ export class AppComponent {
      */
     this.getWeatherService.searchWeather("Tel Aviv");
     this.getWeatherService.weatherForecast("Tel Aviv");
-    await this.getPosition();
-    console.log(this.lon);
+    try{
+      await this.getPosition();
+    }catch{
+      console.log('continue');
+    }
+  
+    
   }
 
   
 
-  async getPosition(): Promise<any>
+  async getPosition(): Promise<number>
   {
-    return await new Promise((resolve) => {
+    return await new Promise((resolve, reject) => {
          navigator.geolocation.getCurrentPosition(position => {
-           resolve(this.lat = position.coords.latitude);
-            resolve (this.lon = position.coords.longitude);
-    });})
-    
-
+          resolve(this.lat = position.coords.latitude);
+          resolve(this.lon = position.coords.longitude);  
+    }, err=>{reject(err.message);}
+    )})
   }
 }
