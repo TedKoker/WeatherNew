@@ -42,13 +42,13 @@ export class GetWeatherService{
             this.cityFiveDays = data as CityFiveDays;
             for(let i=0; i<this.cityFiveDays.list.length; i++){
                 let date = this.cityFiveDays.list[i].dt_txt.toString();
-                if(!date.includes("12:00:00") && !date.includes("00:00:00")){
+                if(!date.includes("12:00:00") && !date.includes("21:00:00")){
                     this.cityFiveDays.list.splice(i,1);
                     i--;
                 }
                 else{
                     this.cityFiveDays.list[i].dt_txt = new Date(date);
-                    if(this.cityFiveDays.list[i].dt_txt.getDate()==new Date().getDate()){
+                    if(this.cityFiveDays.list[i].dt_txt.getDate()==new Date().getDate() && new Date().getHours()>12){
                         this.cityFiveDays.list.splice(i,1);
                         i--;
                     }

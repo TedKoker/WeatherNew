@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CityService } from 'src/app/Services/CityService';
+
 
 
 @Component({
@@ -11,6 +12,7 @@ import { CityService } from 'src/app/Services/CityService';
 export class WeathersearchComponent {
   searchInput:string=""; //The string that the user types in the search box
   searchAutoComplete: string[]; //will hold the possible auto complete for the user
+  @Output() searchInputEvent = new EventEmitter<string>();
 
   constructor(private cityService: CityService) { 
     this.searchAutoComplete=new Array<string>();
@@ -27,4 +29,7 @@ export class WeathersearchComponent {
     }
   }
 
+  sendToApi(city: string){
+    this.searchInputEvent.emit(city);
+  }
 }

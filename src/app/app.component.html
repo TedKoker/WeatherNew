@@ -1,1 +1,1 @@
-<app-weatherbody *ngIf="checkIfComplete()"></app-weatherbody>
+<app-weatherbody *ngIf="checkIfComplete()" (sendToApiEvent)="reciveApiCityRequest($event)"></app-weatherbody>

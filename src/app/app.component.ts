@@ -7,7 +7,11 @@ import { GetWeatherService } from './Services/GetWeatherService';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'WeatherNew';
+  apiCityRequest: string;
+
+  reciveApiCityRequest($event){
+    this.apiCityRequest=$event;
+  }
 
   constructor(private getWeatherService: GetWeatherService){}
   
