@@ -9,11 +9,19 @@ import { GetWeatherService } from './Services/GetWeatherService';
 export class AppComponent {
   apiCityRequest: string;
 
+  constructor(private getWeatherService: GetWeatherService){}
+
   reciveApiCityRequest($event){
     this.apiCityRequest=$event;
+    this.sendApiRequest(this.apiCityRequest);
   }
 
-  constructor(private getWeatherService: GetWeatherService){}
+  sendApiRequest(city: string){
+    this.getWeatherService.cityWeather=null;
+    this.getWeatherService.cityFiveDays=null;
+    this.getWeatherService.searchWeather(city);
+    this.getWeatherService.weatherForecast(city);
+  }
   
   checkIfComplete(){
     if(this.getWeatherService.cityWeather!= null && this.getWeatherService.cityFiveDays!=null){

@@ -5,7 +5,7 @@ import { CityFiveDays } from '../Model/cityFiveDays';
 
 @Injectable({ providedIn: 'root' })
 export class GetWeatherService{
-    appKey:string = "733d028bb2fce048680e2accb3879f6b";
+    private appKey:string = "733d028bb2fce048680e2accb3879f6b";
     cityWeather: CityWeather;
     cityFiveDays: CityFiveDays;
 
