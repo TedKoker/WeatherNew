@@ -48,7 +48,7 @@ export class GetWeatherService{
                 }
                 else{
                     this.cityFiveDays.list[i].dt_txt = new Date(date);
-                    if(this.cityFiveDays.list[i].dt_txt.getDate()==new Date().getDate() && new Date().getHours()>12){
+                    if(this.cityFiveDays.list[i].dt_txt.getDate()==new Date().getDate() && new Date().getHours()>21){
                         this.cityFiveDays.list.splice(i,1);
                         i--;
                     }

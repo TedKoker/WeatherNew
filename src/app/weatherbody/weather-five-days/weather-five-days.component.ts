@@ -18,7 +18,6 @@ export class WeatherFiveDaysComponent {
     this.fiveDayForecast=new Array<FiveDaysForecast>();
     //arrange it so the right hour will be the day and night
     for(let i=0; i<this.cityFiveDays.list.length; i+=2){
-      //importent to remember that even index number is night, and odd index number is day
       if(i+1<this.cityFiveDays.list.length){
         if(this.cityFiveDays.list[i].dt_txt.getHours()==21){
           this.fiveDayForecast.push(new FiveDaysForecast(this.cityFiveDays.list[i],this.cityFiveDays.list[i+1]));

@@ -2,3 +2,12 @@
     padding: 0%;
     margin: 0%;
 }
+
+.emptySearchBar{
+    background-color: #ff9999;
+}
+
+.emptySearchBar::placeholder{
+    color:red;
+    font-size: 1.1em;
+}

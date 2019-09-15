@@ -1,1 +1,4 @@
 <app-weatherbody *ngIf="checkIfComplete()" (sendToApiEvent)="reciveApiCityRequest($event)"></app-weatherbody>
+<div *ngIf="!checkIfComplete()">
+    <h1 class="loadingStyle">Just a sec, we getting what we need from the server..</h1>
+</div>

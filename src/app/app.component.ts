@@ -33,6 +33,11 @@ export class AppComponent {
   }
 
   ngOnInit(){
+    /**
+     * TO DO:
+     * 1) Get users GPS location, and if I can not get it, set Tel Aviv as defult city.
+     * 2) Put a pop up windows at the begining (after it loads from the server), and explain about the page
+     */
     this.getWeatherService.searchWeather("Tel Aviv");
     this.getWeatherService.weatherForecast("Tel Aviv");
   }
