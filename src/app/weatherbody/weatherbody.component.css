@@ -1,0 +1,22 @@
+.popupStyle{
+    visibility: hidden;
+    font-size: 1.5em;
+    position: absolute;
+    background: lightgreen; /*just to see it over the wight screen, it will be white background in the end*/
+    left: 30%;
+    top:15%;
+    padding: 5%;
+    border-radius: 0.3em;
+    padding-top:1%;
+}
+
+.veryBig{
+    font-size: 2.5em;
+    color: red;
+    text-align: center;
+    padding-bottom: 4%;
+}
+
+.popupStyle h1, h2{
+    text-align: center;
+}

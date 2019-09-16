@@ -4,7 +4,8 @@ import { GetWeatherService } from './Services/GetWeatherService';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  //providers: [GetWeatherService]
 })
 export class AppComponent {
   apiCityRequest: string;
@@ -37,21 +38,19 @@ export class AppComponent {
   async ngOnInit() {
     /**
      * TO DO:
-     * 1) Get users GPS location, and if I can not get it, set Tel Aviv as defult city.
+     * 1) V(done)--Get users GPS location, and if I can not get it, set Tel Aviv as defult city
      * 2) Put a pop up windows at the begining (after it loads from the server), and explain about the page
      */
-    this.getWeatherService.searchWeather("Tel Aviv");
-    this.getWeatherService.weatherForecast("Tel Aviv");
+
     try{
       await this.getPosition();
+      this.getWeatherService.searchBasedLocation(this.lat, this.lon);
+      this.getWeatherService.forecastBasedLocation(this.lat, this.lon);
     }catch{
-      console.log('continue');
+      this.getWeatherService.searchWeather("Tel Aviv");
+      this.getWeatherService.weatherForecast("Tel Aviv");
     }
-  
-    
   }
-
-  
 
   async getPosition(): Promise<number>
   {

@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-10 search">
         <input type="text" class="form-control form-control-lg" [(ngModel)]="searchInput" (input)="userType()" [placeholder]="searchBarPlaceHolder" [ngClass]="{'emptySearchBar' : emptySearchBar}">
-          <ul class="list-group" *ngIf="searchInput!=''">
-            <li class="list-group-item list-group-item-action" *ngFor="let complete of searchAutoComplete" (click)="sendToApi(complete)" >{{complete}}</li>
+          <ul class="list-group" *ngIf="searchInput!=''" list="autoComplete" (keydown)="keyDown($event)">
+            <li id="autoComplete" class="list-group-item list-group-item-action" *ngFor="let complete of searchAutoComplete" (click)="sendToApi(complete)" >{{complete}}</li>
           </ul>
     </div>
     <div class="col-2 search">

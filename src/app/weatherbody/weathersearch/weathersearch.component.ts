@@ -92,4 +92,8 @@ export class WeathersearchComponent {
     world=worldArrey.join('');
     return world;
   }
+
+  keyDown(event: KeyboardEvent) {
+    console.log(event.DOM_KEY_LOCATION_NUMPAD);
+  } 
 }
