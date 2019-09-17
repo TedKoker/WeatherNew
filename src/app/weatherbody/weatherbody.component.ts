@@ -7,15 +7,24 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class WeatherbodyComponent {
 
+  searchDone:boolean = false;
   sendToApi: string;
+ 
   @Output() sendToApiEvent = new EventEmitter<string>();
 
   constructor() { }
 
-  reciveAndSend($event){
+  async reciveAndSend($event){
+    this.searchDone=true;
+    console.log(this.searchDone);
+    await this.delay(250);
     this.sendToApi=$event;
     this.sendToApiEvent.emit(this.sendToApi);
   }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
 
   ngOnInit() {
     

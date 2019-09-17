@@ -1,28 +1,17 @@
-<div class="container">
-    <div class="row">
+<div class="container fadeIn" [ngClass]="{'fadeOut' : searchDone}">
+    <div class="row fixPossion">
         <div class="col">
             <app-weathersearch (searchInputEvent)="reciveAndSend($event)"></app-weathersearch>
         </div>
     </div>
-    <div class="row">
+    <div class="row fixPossion">
         <div class="col">
             <app-weather-main-display></app-weather-main-display>
         </div>
     </div>
-    <div class="row">
+    <div class="row fixPossion">
         <div class="col">
             <app-weather-five-days></app-weather-five-days>
         </div>
     </div>
-</div>
-
-<div class="popupStyle">
-    <h1 class="veryBig">Important!</h1> <!--The class veryBig do as a large size font, and red-->
-    <h1>Hello!</h1>
-    <h2>Welcome to my weather page.</h2>
-    <p>Before we enter inside <br>
-    I just wat to warn you about something.. <br>
-    This site is made only to show my programing abilities <br>
-    and I use free weather api, <br>
-    so the weather here is realy not accurate..</p>
 </div>

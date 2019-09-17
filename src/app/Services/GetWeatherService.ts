@@ -20,7 +20,6 @@ export class GetWeatherService{
         .subscribe(data=>{
             this.cityWeather = data as CityWeather;
             this.cityWeather.weather[0].imageUrl="https://openweathermap.org/img/wn/"+this.cityWeather.weather[0].icon+"@2x.png";
-            
         },
         (er: HttpErrorResponse) => {
             console.log (er.message);
@@ -53,7 +52,7 @@ export class GetWeatherService{
                 }
                 else{
                     this.cityFiveDays.list[i].dt_txt = new Date(date);
-                    if(this.cityFiveDays.list[i].dt_txt.getDate()==new Date().getDate() && new Date().getHours()>15){
+                    if(this.cityFiveDays.list[i].dt_txt.getDate()==new Date().getDate()){
                         this.cityFiveDays.list.splice(i,1);
                         i--;
                     }
@@ -76,7 +75,6 @@ export class GetWeatherService{
         .subscribe(data=>{
             this.cityWeather=data as CityWeather;
             this.cityWeather.weather[0].imageUrl="https://openweathermap.org/img/wn/"+this.cityWeather.weather[0].icon+"@2x.png";
-            console.log(this.cityWeather.main.temp);
         });
     }
 
@@ -98,7 +96,7 @@ export class GetWeatherService{
                 }
                 else{
                     this.cityFiveDays.list[i].dt_txt = new Date(date);
-                    if(this.cityFiveDays.list[i].dt_txt.getDate()==new Date().getDate() && new Date().getHours()>15){
+                    if(this.cityFiveDays.list[i].dt_txt.getDate()==new Date().getDate()){
                         this.cityFiveDays.list.splice(i,1);
                         i--;
                     }

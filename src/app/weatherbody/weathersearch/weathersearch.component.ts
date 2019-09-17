@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ElementRef } from '@angular/core';
 import { CityService } from 'src/app/Services/CityService';
+import { element } from 'protractor';
 
 
 
@@ -34,6 +35,7 @@ export class WeathersearchComponent {
   }
 
   sendToApi(city: string){
+    
     if(city!=null && city!=""){
       if(this.searchCaseInsesitive(this.cityService.cityArray, city=this.removeExtraSpaceBar(city))){
         this.searchInputEvent.emit(city);
@@ -92,8 +94,4 @@ export class WeathersearchComponent {
     world=worldArrey.join('');
     return world;
   }
-
-  keyDown(event: KeyboardEvent) {
-    console.log(event.DOM_KEY_LOCATION_NUMPAD);
-  } 
 }

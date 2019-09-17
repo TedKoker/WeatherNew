@@ -1,9 +1,10 @@
 <div class="row">
-    <div class="col colAlign" *ngFor="let day of fiveDayForecast">
+    <div class="col colAlign" *ngFor="let day of fiveDayForecast" style="margin-right: 5%">
         <h6>{{day.date | date : 'dd/MM/yy'}}</h6>
         <img [src]="day.iconUrl"><br>
         <h6>{{day.mainDescription}}</h6>
         <p>{{day.subDescription}}</p>
         <h6>{{day.minTemp-273.15 | number:'1.0-0'}}-{{day.maxTemp-273.15 | number:'1.0-0'}} <sup>C°</sup></h6>
     </div>
+    
 </div>
