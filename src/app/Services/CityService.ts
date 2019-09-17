@@ -37,7 +37,7 @@ export class CityService{
         "Lod",
         "Maalot Tarshiha",
         "Migdal",
-        "Modin",
+        //"Modin",
         "Nahariyya",
         "Nazareth",
         "Nesher",

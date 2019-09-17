@@ -38,8 +38,13 @@ export class AppComponent {
   async ngOnInit() {
     try{
       await this.getPosition();
+      try{
       this.getWeatherService.searchBasedLocation(this.lat, this.lon);
       this.getWeatherService.forecastBasedLocation(this.lat, this.lon);
+      }
+      catch{
+        //make a catch
+      }
     }
     catch{
       this.getWeatherService.searchWeather("Tel Aviv");
